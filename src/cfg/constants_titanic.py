@@ -4,8 +4,8 @@ import numpy as np
 import torch
 import platform
 
-# ROOT_DIR = "/home/hice1/amcdaniel39/scratch/llm-guided-evolution-fork"
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT_DIR = "/storage/ice1/6/9/nlin47/STOCK/llm-guided-evolution-stock-opt"
+# ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_PATH = os.path.join(ROOT_DIR, "sota/titanic/data")
 SOTA_ROOT = os.path.join(ROOT_DIR, 'sota/Titanic')
 SEED_NETWORK = os.path.join(SOTA_ROOT, 'model.py')

@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=LLMGE01_Server
-#SBATCH -t 08:00:00
-#SBATCH --nodes=1
+#SBATCH --job-name=llm_server
+#SBATCH -t 8:00:00
+#SBATCH --gres=gpu:2
 #SBATCH -G 2
 #SBATCH -C "A100-80GB|H100|H200"
 #SBATCH --mem 160G
 #SBATCH -c 16
-
+#SBATCH -N 1
 echo "launching LLM Server"
 
 hostname
@@ -25,4 +25,8 @@ echo "Writing server hostname '$SERVER_HOSTNAME' to file: $HOSTNAME_FILE"
 echo "$SERVER_HOSTNAME" > "$HOSTNAME_FILE"
 echo "Starting LLM server on host: $SERVER_HOSTNAME"
 
-uv run uvicorn server:app --host $SERVER_HOSTNAME --port 8137 --workers 1
+source .venv/bin/activate
+
+uvicorn server:app --host $SERVER_HOSTNAME --port 8137 --workers 1
+
+deactivate

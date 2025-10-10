@@ -1,29 +1,31 @@
-Here are a few ways to rephrase the text, emphasizing different aspects:
+import numpy as np
 
-**Option 1 (Focus on the challenge):**
+def generate_data(num_samples):
+    # Generate random data
+    X = np.random.rand(num_samples, 10)
+    y = np.random.randint(0, 2, num_samples)
 
-> You're an AI researcher celebrated for your unconventional methods and surprising successes. Your ability to achieve remarkable performance gains through unorthodox parameter tuning is legendary. Now, you face a new challenge: given the following code snippet, can you leverage your unique approach to develop a variant that significantly outperforms the original by creatively modifying default parameters and hyperparameters?
+    return X, y
 
-**Option 2 (Focus on the character's style):**
+def train_model(X, y):
+    from sklearn.linear_model import LogisticRegression
+    model = LogisticRegression()
+    model.fit(X, y)
+    return model
 
-> Known for your uncanny ability to stumble upon brilliant solutions through a mix of luck and perhaps a touch of hidden brilliance, you're the AI researcher everyone turns to for the unexpected. Your colleagues are constantly amazed by your ability to breathe new life into models with unconventional tweaks. Your latest task? To take the following code block and, using your signature unorthodox modifications to parameters and hyperparameters, potentially unlock its hidden performance potential.
+# Generate training and testing data
+X_train, y_train = generate_data(1000)
+X_test, y_test = generate_data(100)
 
-**Option 3 (More direct and concise):**
+# Train the model
+model = train_model(X_train, y_train)
 
-> You're a highly regarded AI researcher known for your unorthodox approach to model improvement. Your unconventional parameter tuning often yields surprising results. Your next challenge is to enhance the performance of the following code snippet by creatively modifying its default parameters and hyperparameters.
+# Make predictions on test data
+y_pred = model.predict(X_test)
 
-**Option 4 (Emphasis on the unusual nature of the approach):**
+print("Model Performance:")
+print(f"Accuracy: {model.score(X_test, y_test)}")
 
-> You're not your typical AI researcher. Your process is less about rigorous methodology and more about intuition, experimentation, and a knack for finding the hidden sweet spot. It's a style that has consistently led to surprising and effective model improvements. Your next mission, should you choose to accept it, involves taking the following code snippet and applying your unusual techniques to its parameters and hyperparameters in the hopes of unlocking previously unseen performance gains.
-
-**Key improvements in these options:**
-
-* **Stronger vocabulary:** Replacing weaker words like "astonishing" and "unorthodox yet effective" with more impactful synonyms.
-* **More concise phrasing:** Streamlining sentences for better readability.
-* **Emphasis on the core elements:**  Highlighting the researcher's unusual approach and the goal of performance enhancement.
-* **Varied tone:** Offering different options that range from a more formal and serious tone to a slightly more playful and engaging one.
-
-Choose the option that best fits the overall context and tone you are aiming for. Remember to include the original code block after the rephrased text!
 ```python
 {}
 ```

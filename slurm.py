@@ -32,8 +32,11 @@ echo "launching LLM Guided Evolution"
 hostname
 
 export SERVER_HOSTNAME=$(hostname)
-uv run python run_improved.py titanic_test
+source .venv/bin/activate
+python run_improved.py finrl_test
+deactivate
 """
+# instead of uv run python --active run_improved.py finrl_test
         replace_script_configuration("run.sh", runsh_config_lines + run_sh)
 
         mixtsh_config_lines = "\n".join(content[indices[2]+1:indices[3]])
@@ -45,8 +48,12 @@ module load gcc/13.2.0
 source ~/.bashrc
 # Set the TOKENIZERS_PARALLELISM environment variable if needed
 export TOKENIZERS_PARALLELISM=false
-uv run python llm_crossover.py '{constants.SEED_NETWORK}' '{constants.SOTA_ROOT}/models/Menghao/model_x.py' '{constants.SOTA_ROOT}/models/Menghao/model_z.py'  --top_p 0.15   --temperature 0.1 --apply_quality_control 'True' --bit 8
+
+source .venv/bin/activate
+python llm_crossover.py '{constants.SEED_NETWORK}' '{constants.SOTA_ROOT}/models/Menghao/model_x.py' '{constants.SOTA_ROOT}/models/Menghao/model_z.py'  --top_p 0.15   --temperature 0.1 --apply_quality_control 'True' --bit 8
+deactivate
 """
+# uv run python llm_crossover.py '{constants.SEED_NETWORK}' '{constants.SOTA_ROOT}/models/Menghao/model_x.py' '{constants.SOTA_ROOT}/models/Menghao/model_z.py'  --top_p 0.15   --temperature 0.1 --apply_quality_control 'True' --bit 8
         replace_script_configuration("src/mixt.sh", mixtsh_config_lines + mixt_sh)
 
         llm_gpu = content[indices[4]+1:indices[5]][0]
@@ -58,8 +65,12 @@ hostname
 module load cuda
 export CUDA_VISIBLE_DEVICES=0
 
+cd {constants.SOTA_ROOT}
+source .venv_finrl/bin/activate
+
 # Run Python script
 {{}}
+deactivate
 """
         llm_bash_config = "\n".join(content[indices[8]+1:indices[9]])
     
@@ -93,7 +104,11 @@ echo "Writing server hostname '$SERVER_HOSTNAME' to file: $HOSTNAME_FILE"
 echo "$SERVER_HOSTNAME" > "$HOSTNAME_FILE"
 echo "Starting LLM server on host: $SERVER_HOSTNAME"
 
-uv run uvicorn server:app --host $SERVER_HOSTNAME --port 8137 --workers 1
+source .venv/bin/activate
+
+python -m uvicorn server:app --host $SERVER_HOSTNAME --port 8137 --workers 1
+
+deactivate
 """           
 
         local_llm_server_config = "\n".join(content[indices[10]+1:indices[11]])

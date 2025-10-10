@@ -1,0 +1,981 @@
+---------------------------------------
+Begin Slurm Prolog: Oct-10-2025 01:11:42
+Job ID:    3295635
+User ID:   nlin47
+Account:   coc
+Job name:  llm_opt
+Partition: pace-cpu
+QOS:       coe-ice
+---------------------------------------
+launching LLM Guided Evolution
+atl1-1-02-010-1-2.pace.gatech.edu
+
+⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣶⣶⠶⣶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣀⣹⣟⣛⣛⣻⣿⣿⣿⡾⠟⢉⣴⠟⢁⣴⠋⣹⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠈⠛⠛⣿⠉⢉⣩⠵⠚⠁⢀⡴⠛⠁⣠⠞⠁⣰⠏⠸⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢻⣷⠋⠁⠀⢀⡴⠋⠀⢀⡴⠋⠀⣼⠃⠀⡼⢿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢻⣆⣠⡴⠋⠀⠀⣠⠟⠀⢀⡾⠁⠀⡼⠁⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠻⣯⡀⠀⢀⡼⠃⠀⢠⡟⠀⢀⡾⠁⢀⣾⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠙⠻⣶⣟⡀⠀⣰⠏⠀⢀⡾⠁⠀⣼⢹⣿⣀⣤⣤⣴⠶⢿⡿⠛⢛⣷⢶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠶⠶⠾⠷⠶⠿⠛⢻⣟⠉⣥⠟⠁⣠⠟⠀⢠⠞⠁⣄⡿⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⠞⠁⢀⡴⠋⠀⣴⠋⠀⣰⠟⠀⣤⡾⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡄⢠⠞⠁⢀⡾⠁⢀⡼⠃⢀⡴⠋⠀⢸⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣷⠋⠀⣰⠏⠀⣠⠟⠀⣰⠟⠁⢀⡴⠛⣿⠀⠀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣧⡼⠃⢀⡼⠋⢠⡞⠁⣠⣞⣋⣤⣶⣿⡟⠛⣿⠛⠛⣻⠟⠷⢶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣦⣾⣤⣴⣯⡶⠾⠟⠛⠉⠉⠉⣿⡇⢠⡏⠀⣰⠏⠀⢀⣼⠋⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⡾⠀⢰⠏⠀⢠⡞⠁⠀⣠⠞⢻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣷⠇⢠⠏⠀⣰⠋⠀⣠⠞⠁⠀⢀⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⢠⠟⢀⡼⠁⣠⠞⠁⣀⣴⢾⣿⣤⣿⣦⣄⣀⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡟⣠⠏⣠⠞⣁⣴⣾⣿⣿⣿⣿⣿⣿⡏⢹⡏⠛⠳⣦⣄⡀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢷⣾⣷⠿⠿⠛⠉⠀⠀⠈⠳⣬⣿⡟⣾⠁⠀⣼⠃⠉⠻⠆
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣧⡏⠀⣼⠃⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠁⡼⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣟⡼⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡿⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢙⣃⠀⠀
+
+
+**************************************************************************************************************
+*                                     CREATING POPULATION FROM SEED CODE                                     *
+**************************************************************************************************************
+
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx2RCd0LShQt6RPpgfq2QNq4Qh.sh
+	‣ Output: Submitted batch job 3295645
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxKRVWcJoytCRfCh6OPcZFfK8y.sh
+	‣ Output: Submitted batch job 3295646
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxdynXW5RL53WVhPegWjNY9NZt.sh
+	‣ Output: Submitted batch job 3295647
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx7ZiCDztcgq4IRJg9dD1R4ZUd.sh
+	‣ Output: Submitted batch job 3295648
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxbbnmE4BehRvWDz4cpiuIpx5c.sh
+	‣ Output: Submitted batch job 3295649
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxK7HpCjQWur8nm4K7THy0ISLl.sh
+	‣ Output: Submitted batch job 3295650
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxg8HCeg8dtma5X2lHXAqcv6UO.sh
+	‣ Output: Submitted batch job 3295651
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxvf2k4zZSegGJPJABCiAjAln7.sh
+	‣ Output: Submitted batch job 3295652
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxt20OjlW151qgfKPgyvOMAC8x.sh
+	‣ Output: Submitted batch job 3295653
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxZVHSCS3KlwEAjbbKu12b46y7.sh
+	‣ Output: Submitted batch job 3295654
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxquQU8fdTY96Igcja5f1eTDDc.sh
+	‣ Output: Submitted batch job 3295655
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxkLhEa9xEOPeFFDQQStJw9939.sh
+	‣ Output: Submitted batch job 3295656
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxYbvdV6Dos13WPTlo7UZ1fIlI.sh
+	‣ Output: Submitted batch job 3295657
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxTGITU0eDAXDVIaPgrbqv5hqQ.sh
+	‣ Output: Submitted batch job 3295658
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxUVypR2rX4Yqzy2PVPjrx0i2u.sh
+	‣ Output: Submitted batch job 3295659
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxXnEHbDdWfDSuZREmqgOelK6X.sh
+	‣ Output: Submitted batch job 3295660
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxdQK7056OnY5YTLuzv6MKSKnJ.sh
+	‣ Output: Submitted batch job 3295661
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxoJ0rOxVmUsF39BScRjWlC2Yq.sh
+	‣ Output: Submitted batch job 3295662
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxgKvV6ywC8qkkj93xGxjbnhiR.sh
+	‣ Output: Submitted batch job 3295663
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx578HIzw4nJ55akzC2VDOmV9g.sh
+	‣ Output: Submitted batch job 3295664
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxP78Qj95Pu2ebiusWO84wYFI5.sh
+	‣ Output: Submitted batch job 3295665
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxkNjNxiv5UQuuuGvCBlQA74d4.sh
+	‣ Output: Submitted batch job 3295666
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxnhm0NCjqr0FWKQZjHi4U5V9N.sh
+	‣ Output: Submitted batch job 3295667
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxuwY8I7OrhIshDzNSA6rDlapl.sh
+	‣ Output: Submitted batch job 3295668
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxqNb5625a6Xi4L5C9z1OXUPJC.sh
+	‣ Output: Submitted batch job 3295669
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxHauyOvb9n1pLS7mA98Rbx9e5.sh
+	‣ Output: Submitted batch job 3295670
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxNKPycBclS4KTwZBuAGefzdcC.sh
+	‣ Output: Submitted batch job 3295671
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxAT1Bq2UtKoUacSvbJDZBekxl.sh
+	‣ Output: Submitted batch job 3295672
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxhF1v8FtnRXCfGN6vjMhNFeJk.sh
+	‣ Output: Submitted batch job 3295673
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxASiiuiDsSfnt9AdUoz4hwm8d.sh
+	‣ Output: Submitted batch job 3295674
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx9NwSISOAxTpJCG15kdhkVGjE.sh
+	‣ Output: Submitted batch job 3295675
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxjUZFFfqq2S2eF3SA3M36Z7AL.sh
+	‣ Output: Submitted batch job 3295676
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxWycTe5zOF0O5i6J1Jfvizi0i.sh
+	‣ Output: Submitted batch job 3295677
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxorqaZAfVuv5GtiezbHuKgx6V.sh
+	‣ Output: Submitted batch job 3295678
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxLJhgwCr358cmsM1POeM4aLbB.sh
+	‣ Output: Submitted batch job 3295679
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxtNCmekjmXVCIeUcFabyQNIcz.sh
+	‣ Output: Submitted batch job 3295680
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxMOfHKKPwFkUfrktJGmEbTZa7.sh
+	‣ Output: Submitted batch job 3295681
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxDzgfR5XsnIAWZK3x22pOzzFJ.sh
+	‣ Output: Submitted batch job 3295682
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxqaLYYwXdHMSxToe6dYVOsFa9.sh
+	‣ Output: Submitted batch job 3295683
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxDFCSH6059dXrNNB3UuM3uEfD.sh
+	‣ Output: Submitted batch job 3295684
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxrGgId7L8ci31MwfrJcX7yljp.sh
+	‣ Output: Submitted batch job 3295685
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxNT06Vfrh3mmsF5oKTcoMATta.sh
+	‣ Output: Submitted batch job 3295686
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxWF5Q1gqMChkY589QKyUR28nu.sh
+	‣ Output: Submitted batch job 3295687
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxPNS2llBiqHizmkoBFFOK0uTG.sh
+	‣ Output: Submitted batch job 3295688
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx5AqkhIId7GXouCQjEqXYRIqE.sh
+	‣ Output: Submitted batch job 3295689
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxeBvosOEeTJuOXrruNcMDm719.sh
+	‣ Output: Submitted batch job 3295690
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx6nBcAANTZJ40JF1tLM5mpv5u.sh
+	‣ Output: Submitted batch job 3295691
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxtIGwBlwEmXQ28KwM6BioVsQ5.sh
+	‣ Output: Submitted batch job 3295692
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxAMtbC9ivkGRcdsBLHrezlwjb.sh
+	‣ Output: Submitted batch job 3295693
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxUrJ08ysgRqUUpzLNqDEp6wlh.sh
+	‣ Output: Submitted batch job 3295694
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxfhduroEK8T51FzVKy4cDbCUW.sh
+	‣ Output: Submitted batch job 3295695
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx7oE5gfbu6dUECBMynHa9IvLC.sh
+	‣ Output: Submitted batch job 3295696
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxBQA3u5Q3Zc8LHCAHizkEGg2r.sh
+	‣ Output: Submitted batch job 3295697
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxL8sxMMjiFcBMuHzCIOoXVaRh.sh
+	‣ Output: Submitted batch job 3295698
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxexagNs2RlYqzwUwJ2AehTxHe.sh
+	‣ Output: Submitted batch job 3295699
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxFK35ai0z7mwcPqy7Xc61nf47.sh
+	‣ Output: Submitted batch job 3295700
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx0FjQHaEFLuFWGeycRCbuSSp5.sh
+	‣ Output: Submitted batch job 3295701
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxWNvNQsq96OE7PEKcDkq8c9UV.sh
+	‣ Output: Submitted batch job 3295702
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxiAahBUc9XmGhk8t2zGrHnvLl.sh
+	‣ Output: Submitted batch job 3295703
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx6uIQuoJMJRKtMMpNgosIo3rG.sh
+	‣ Output: Submitted batch job 3295704
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxdZ8yjtkHslQ5cvnyLxw159y5.sh
+	‣ Output: Submitted batch job 3295705
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxJeJ79ETuFgZPUZVtrafFeNEy.sh
+	‣ Output: Submitted batch job 3295706
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx9TIaVOS1t8VusVtAvFt5J8gV.sh
+	‣ Output: Submitted batch job 3295707
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxiQbirOUImTmiNx9c26bfXfzj.sh
+	‣ Output: Submitted batch job 3295708
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxTNwrhTuY7LQsZKMfwvOMRfU3.sh
+	‣ Output: Submitted batch job 3295709
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxkN6B0q7CMXrKYlUYQAxP8vLK.sh
+	‣ Output: Submitted batch job 3295710
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxyU6dHFkQU840JMh6IIKefQwR.sh
+	‣ Output: Submitted batch job 3295711
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxc2ZhkM5es6oUiWhJ3OO4ESBq.sh
+	‣ Output: Submitted batch job 3295712
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx6pgCFqLTImgrqydlT5CU5cps.sh
+	‣ Output: Submitted batch job 3295713
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxIN94X85QWd3BWPId6SmfpyBX.sh
+	‣ Output: Submitted batch job 3295714
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxO7zcLyhHGSJbP8S6BI0v3q9G.sh
+	‣ Output: Submitted batch job 3295715
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxDxjGpNUvawfbqSkiWpkVPekr.sh
+	‣ Output: Submitted batch job 3295716
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx79fWZqzB5243Zd7QwDtyHQVf.sh
+	‣ Output: Submitted batch job 3295717
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxxYAgOv1cJcg44ncnxCVYT5xb.sh
+	‣ Output: Submitted batch job 3295718
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxYWytdteRM6Nf4KddU4gYC61P.sh
+	‣ Output: Submitted batch job 3295719
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxpyXnNvRiRBcwTAGBQyl6IErR.sh
+	‣ Output: Submitted batch job 3295720
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxyBDGV1P5p598hVTokEVZA8Nj.sh
+	‣ Output: Submitted batch job 3295721
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxnW9pcWloCX60nBe7qLNQbIPg.sh
+	‣ Output: Submitted batch job 3295722
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxhcrklZniiYRxJJVr6ineSFXS.sh
+	‣ Output: Submitted batch job 3295723
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxEC0fmfHfM7GqsRp6doIVt0UD.sh
+	‣ Output: Submitted batch job 3295724
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxhx4QkBiiBiSvIvWgwBfS4Lru.sh
+	‣ Output: Submitted batch job 3295725
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxxUtumcAOcjgaKPPzNrkU2ldA.sh
+	‣ Output: Submitted batch job 3295726
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxEbqZ5zYHr90IviUJAK61Gz3q.sh
+	‣ Output: Submitted batch job 3295727
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxL5YFQQWItRdjDtPKF61rVMm6.sh
+	‣ Output: Submitted batch job 3295728
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx1zby4qhrab2571jezj4WNvPB.sh
+	‣ Output: Submitted batch job 3295729
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxMKfefxhKnwGZU8VFtt3tSHFs.sh
+	‣ Output: Submitted batch job 3295730
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxqELJ2Qf7bPkIW6qqnpzisRVK.sh
+	‣ Output: Submitted batch job 3295731
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxIblS4KGMNryTwlecCJpoR1O5.sh
+	‣ Output: Submitted batch job 3295732
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxv1h1cEtBg0AEYslaR5T8WfMf.sh
+	‣ Output: Submitted batch job 3295733
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxRdxRU6EqUKjAmu9mpp9RV3vz.sh
+	‣ Output: Submitted batch job 3295734
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxEWGSK5qPw6eTEt6ZaRBdCQe6.sh
+	‣ Output: Submitted batch job 3295735
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxNon1PltxFT9VKku9F8vbUD75.sh
+	‣ Output: Submitted batch job 3295736
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxtxVYVjsCi7ApavrY3jISjJ76.sh
+	‣ Output: Submitted batch job 3295737
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxe46DIaR0XnEwmkFuWL6aEFGT.sh
+	‣ Output: Submitted batch job 3295738
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx1TE1GRkSrIRReHyRmv6vXU0X.sh
+	‣ Output: Submitted batch job 3295739
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxhT9dsVzX5kKpWUn5JDYZ1odR.sh
+	‣ Output: Submitted batch job 3295740
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxt78VxVqKwVPmhuSoz9nGFGbM.sh
+	‣ Output: Submitted batch job 3295741
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx6em5nSJc3nKZFoXZQ43Z3cu2.sh
+	‣ Output: Submitted batch job 3295742
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxrQjT91YM7cdSkAwNn5P2cuQ8.sh
+	‣ Output: Submitted batch job 3295743
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxgHwL0Q9ZDUNNUiI5XLWX0HdJ.sh
+	‣ Output: Submitted batch job 3295744
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx3ZaikOGaf1X3pffuhlZa4yHk.sh
+	‣ Output: Submitted batch job 3295745
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxcSEmlaTm4XMhMRWfa7eFSFTm.sh
+	‣ Output: Submitted batch job 3295746
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxHMppM6hXAukxDnDecIsnLA3X.sh
+	‣ Output: Submitted batch job 3295747
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxMiO8FgnaHcWAoekAZGXKydyt.sh
+	‣ Output: Submitted batch job 3295748
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxq76QAJl5BfxuNon7y2minh68.sh
+	‣ Output: Submitted batch job 3295749
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxDWf3RiMnqXsazvXo7g7ziO1Q.sh
+	‣ Output: Submitted batch job 3295750
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxN5WMc28TTRB3svI3W9lsJKRZ.sh
+	‣ Output: Submitted batch job 3295751
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxaH8z2X11zELZMsAZjajF7GfL.sh
+	‣ Output: Submitted batch job 3295752
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxVXjLUPL12WILsvPlHUxTuHnW.sh
+	‣ Output: Submitted batch job 3295753
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxk5GCYBQHAXhbuEqkppJuBGqW.sh
+	‣ Output: Submitted batch job 3295754
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxUvpC56ZEmnWeJzbaXSVPYam0.sh
+	‣ Output: Submitted batch job 3295755
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxs14EJZUpgkl65ihyUwSw3tS9.sh
+	‣ Output: Submitted batch job 3295756
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXx7lvFONzVhg5p5IQAqQnPc2Wm.sh
+	‣ Output: Submitted batch job 3295757
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxSyNqqIDx3DUTHfRRL7DiZvcI.sh
+	‣ Output: Submitted batch job 3295758
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxPPrxhC9AhgNgUDyiEGAUZcNJ.sh
+	‣ Output: Submitted batch job 3295759
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxnojsTolOs7NgR2MYK2m15tyU.sh
+	‣ Output: Submitted batch job 3295760
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxTqTy4QKJFG9znf1qXkgUOTfp.sh
+	‣ Output: Submitted batch job 3295761
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxcc10AYRw7FxCGKry56O8CIiY.sh
+	‣ Output: Submitted batch job 3295762
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxLIKMssLMRwQmAPEAAMxVAWTD.sh
+	‣ Output: Submitted batch job 3295763
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxwQW3LG1pqyIFnNR8DA1Ln4OU.sh
+	‣ Output: Submitted batch job 3295764
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxxy0te76ErEmRT5UoDk8SEiZA.sh
+	‣ Output: Submitted batch job 3295765
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxIRWBV8pFZSkzjNBWTykLau09.sh
+	‣ Output: Submitted batch job 3295766
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxa3ms5zIA8pFr9tFOceiyNFub.sh
+	‣ Output: Submitted batch job 3295767
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxbxDmicXrEavRJ4DVe9T08Ret.sh
+	‣ Output: Submitted batch job 3295768
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxnGYmemHCU2Qixs3B4SoKaoYj.sh
+	‣ Output: Submitted batch job 3295769
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxDfzDrZ33M0CvSJBtDZeNWDrT.sh
+	‣ Output: Submitted batch job 3295770
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxgONU6bywSjhB17gBYoyHfq4N.sh
+	‣ Output: Submitted batch job 3295771
+
+************************************************************
+*                    Create Individual                     *
+************************************************************
+	‣ FixedPrompts
+	‣ Bash script saved to finrl_test/0/xXxMDsnyh91HwWJiSQm316BpQ2X.sh
+	‣ Output: Submitted batch job 3295772
+
+************************************************************
+*               Batch Checking Created Genes               *
+************************************************************
+Checking for Job Completion: 3295645 for xXx2RCd0LShQt6RPpgfq2QNq4Qh
+	‣ Waiting on check4job_completion LLM job: 3295645 Time: 60s
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295646 for xXxKRVWcJoytCRfCh6OPcZFfK8y
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295647 for xXxdynXW5RL53WVhPegWjNY9NZt
+	‣ Waiting on check4job_completion LLM job: 3295647 Time: 60s
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295648 for xXx7ZiCDztcgq4IRJg9dD1R4ZUd
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295649 for xXxbbnmE4BehRvWDz4cpiuIpx5c
+	‣ Waiting on check4job_completion LLM job: 3295649 Time: 60s
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295650 for xXxK7HpCjQWur8nm4K7THy0ISLl
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295651 for xXxg8HCeg8dtma5X2lHXAqcv6UO
+	‣ Waiting on check4job_completion LLM job: 3295651 Time: 60s
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295652 for xXxvf2k4zZSegGJPJABCiAjAln7
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295653 for xXxt20OjlW151qgfKPgyvOMAC8x
+	‣ Waiting on check4job_completion LLM job: 3295653 Time: 60s
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295654 for xXxZVHSCS3KlwEAjbbKu12b46y7
+	☠ Error Found in LLM Job Output.
+Checking for Job Completion: 3295655 for xXxquQU8fdTY96Igcja5f1eTDDc
+slurmstepd: error: *** JOB 3295635 ON atl1-1-02-010-1-2 CANCELLED AT 2025-10-10T01:18:28 ***
+---------------------------------------
+Begin Slurm Epilog: Oct-10-2025 01:18:30
+Job ID:        3295635
+User ID:       nlin47
+Account:       coc
+Job name:      llm_opt
+Resources:     cpu=4,mem=16G,node=1
+Rsrc Used:     cput=00:27:04,vmem=0,walltime=00:06:46,mem=579568K,energy_used=0
+Partition:     pace-cpu
+QOS:           coe-ice
+Nodes:         atl1-1-02-010-1-2
+---------------------------------------

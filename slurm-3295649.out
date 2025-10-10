@@ -1,0 +1,101 @@
+---------------------------------------
+Begin Slurm Prolog: Oct-10-2025 01:15:09
+Job ID:    3295649
+User ID:   nlin47
+Account:   coc
+Job name:  llm_oper
+Partition: ice-gpu
+QOS:       coe-ice
+---------------------------------------
+Launching AIsurBL
+atl1-1-01-005-7-0.pace.gatech.edu
+Loading /storage/ice1/6/9/nlin47/STOCK/llm-guided-evolution-stock-opt/sota/FinRL/model.py code
+
+************************************************************
+*                      PROMPT TO LLM                       *
+************************************************************
+Q: What are some obscure modifications to default parameters or hyperparameters that could potentially improve the performance of this existing code snippet?
+
+The current code block:
+```python
+# Call parent constructor, or try modifying it
+        super().__init__(
+            policy=policy,
+            env=env,
+            learning_rate=learning_rate,
+            buffer_size=buffer_size,
+            learning_starts=learning_starts,
+            batch_size=batch_size,
+            tau=tau,
+            gamma=gamma,
+            train_freq=train_freq,
+            gradient_steps=gradient_steps,
+            action_noise=action_noise,
+            replay_buffer_class=replay_buffer_class,
+            replay_buffer_kwargs=replay_buffer_kwargs,
+            optimize_memory_usage=optimize_memory_usage,
+            n_steps=n_steps,
+            policy_kwargs=policy_kwargs,
+            tensorboard_log=tensorboard_log,
+            verbose=verbose,
+            device=device,
+            seed=seed,
+            _init_setup_model=_init_setup_model,
+        ) 
+```
+1. Retain original class names.
+2. Format the code in Markdown.
+3. Exclude setup/demonstration code.
+4. Retain original tensor input/output sizes.
+5. Provide full code.
+6. Must function with default settings.
+
+A: Let us think step by step
+atl1-1-03-012-28-0.pace.gatech.edu
+Request failed: HTTPConnectionPool(host='atl1-1-03-012-28-0.pace.gatech.edu', port=8137): Max retries exceeded with url: /generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1554580c38c0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Checking LLM Response
+Response Invalid
+atl1-1-03-012-28-0.pace.gatech.edu
+Request failed: HTTPConnectionPool(host='atl1-1-03-012-28-0.pace.gatech.edu', port=8137): Max retries exceeded with url: /generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1554581279d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Checking LLM Response
+Response Invalid
+atl1-1-03-012-28-0.pace.gatech.edu
+Request failed: HTTPConnectionPool(host='atl1-1-03-012-28-0.pace.gatech.edu', port=8137): Max retries exceeded with url: /generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1554581582d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Checking LLM Response
+Response Invalid
+
+************************************************************
+*                      CODE FROM LLM                       *
+************************************************************
+Traceback (most recent call last):
+  File "/storage/ice1/6/9/nlin47/STOCK/llm-guided-evolution-stock-opt/src/llm_mutation.py", line 67, in <module>
+    augment_network(input_filename=args.input_filename,
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    output_filename=args.output_filename,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                    inference_submission=args.inference_submission,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   )
+                   ^
+  File "/storage/ice1/6/9/nlin47/STOCK/llm-guided-evolution-stock-opt/src/llm_mutation.py", line 32, in augment_network
+    code_from_llm = generate_augmented_code(txt2llm, augment_idx-1, apply_quality_control,
+                                            top_p, temperature, inference_submission=inference_submission)
+  File "/storage/ice1/6/9/nlin47/STOCK/llm-guided-evolution-stock-opt/src/llm_utils.py", line 105, in generate_augmented_code
+    code_from_llm = clean_code_from_llm(code_from_llm)
+  File "/storage/ice1/6/9/nlin47/STOCK/llm-guided-evolution-stock-opt/src/llm_utils.py", line 58, in clean_code_from_llm
+    return '\n'.join(code_from_llm.strip().split("```")[1].split('\n')[1:])
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'strip'
+---------------------------------------
+Begin Slurm Epilog: Oct-10-2025 01:15:15
+Job ID:        3295649
+User ID:       nlin47
+Account:       coc
+Job name:      llm_oper
+Resources:     cpu=12,gres/gpu:rtx_6000=1,mem=16G,node=1
+Rsrc Used:     cput=00:01:00,vmem=0,walltime=00:00:05,mem=285912K,energy_used=0
+Partition:     ice-gpu
+QOS:           coe-ice
+Nodes:         atl1-1-01-005-7-0
+---------------------------------------
