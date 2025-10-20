@@ -1,5 +1,5 @@
 from finrl.agents.stablebaselines3.models import DRLAgent, MODELS
-from model import CustomDDPG  # Import your custom model class
+from model import CustomDDPG, CustomTD3  # Import your custom model class
 
 class CustomDRLAgent(DRLAgent):
     """

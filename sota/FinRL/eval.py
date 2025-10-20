@@ -206,36 +206,56 @@ if __name__ == "__main__":
     # )
     ### trained_ddpg.save("sota/FinRL/trained/trained_ddpg.zip")
 
-    # =========== CUSTOM DDPG =================
-    agent = CustomDRLAgent(env=env_train_vec) 
-    # CustomDRLAgent inherits from DRLAgent but allows custom models 
-    #(like CustomDDPG, which is what we want to evolve!)
 
-    CUSTOM_DDPG_PARAMS = {"batch_size": 128, "buffer_size": 50000, "learning_rate": 0.001}
-    # {
-    #     "learning_rate": 0.001,
-    #     "buffer_size": 50000,
-    #     "batch_size": 128,
-    #     "gamma": 0.985,
-    #     "tau": 0.005,
-    #     "policy_kwargs": {
-    #         "net_arch": dict(
-    #             pi=[256, 256],  # LLM can evolve these layers
-    #             qf=[256, 256]
-    #         )
-    #     }
-    # }
+    # ========== CUSTOM AGENT SELECTION ==========
 
-    # Instantiate the agent, given the custom model class and parameters
-    model_ddpg = agent.get_model(model_name="custom_ddpg", model_class=model.CustomDDPG, model_kwargs=CUSTOM_DDPG_PARAMS)
+    # Choose which algorithm to train: "ddpg" or "td3"
+    ALGO = "td3"
 
-    # TRAIN MODEL
-    trained_ddpg = agent.train_model(
-        model=model_ddpg, tb_log_name="ddpg", total_timesteps=50000
-    )
-    env_train_vec.close() # close the parallel envs after training is done
+    # Shared agent
+    agent = CustomDRLAgent(env=env_train_vec)
 
+    # Define model registry
+    MODEL_CONFIGS = {
+        "ddpg": {
+            "class": model.CustomDDPG,
+            "params": {
+                "batch_size": 128,
+                "buffer_size": 50000,
+                "learning_rate": 0.001,
+                "gamma": 0.985,
+                "tau": 0.005,
+                "policy_kwargs": {
+                    "net_arch": dict(pi=[256, 256], qf=[256, 256])
+                },
+            },
+        },
+        "td3": {
+            "class": model.CustomTD3,
+            "params": {
+                "batch_size": 128,
+                "buffer_size": 100000,
+                "learning_rate": 0.001,
+                "policy_delay": 2,
+                "target_policy_noise": 0.2,
+                "target_noise_clip": 0.5,
+                "policy_kwargs": {
+                    "net_arch": dict(pi=[400, 300], qf=[400, 300])
+                },
+            },
+        },
+    }
 
+    # Select model class + params based on ALGO
+    config = MODEL_CONFIGS[ALGO]
+    model_class = config["class"]
+    model_kwargs = config["params"]
+
+    # Instantiate and train model
+    model = agent.get_model(model_name=f"custom_{ALGO}", model_class=model_class, model_kwargs=model_kwargs)
+    trained_model = agent.train_model(model=model, tb_log_name=ALGO, total_timesteps=50000)
+
+    env_train_vec.close()
 
     # ================ TRADING / Test =================
     print("[eval.py] Trading Environment + Predictions on Trained DRLAgent...")
@@ -248,7 +268,7 @@ if __name__ == "__main__":
     # Create single trading environment
     e_trade_gym = StockPortfolioEnv(df=trade_df, **env_kwargs)
 
-    df_daily_return, df_actions = agent.DRL_prediction(model=trained_ddpg, environment=e_trade_gym)
+    df_daily_return, df_actions = agent.DRL_prediction(model=trained_model, environment=e_trade_gym)
     # df_daily_return, df_actions = vectorized_prediction(trained_ddpg, e_trade_gym) # don't need to parallelize one testing run
 
     print(f"Daily returns shape: {df_daily_return.shape}")
@@ -298,6 +318,7 @@ if __name__ == "__main__":
     # These are the metrics LLM will optimize
     # results_text = f"{annual_return:.6f},{annual_volatility:.6f},{sharpe_ratio:.6f},{max_drawdown:.6f},{calmar_ratio:.6f},{sortino_ratio:.6f},{cumulative_return:.6f}"
     results_text = f"{annual_return:.6f},{annual_volatility:.6f},{sharpe_ratio:.6f}"
+
 
     # Write to file
     results_dir = p("results")

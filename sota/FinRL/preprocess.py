@@ -15,6 +15,7 @@ from finrl.plot import backtest_stats, backtest_plot, get_daily_return, get_base
 from finrl.meta.data_processor import DataProcessor
 from finrl.meta.data_processors.processor_yahoofinance import YahooFinanceProcessor
 
+print("LOADED")
 
 class YahooDownloaderLocal:
     """Provides methods for retrieving daily stock data from
