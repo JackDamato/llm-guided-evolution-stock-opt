@@ -229,7 +229,7 @@ if __name__ == "__main__":
     else:
         print(f"\n\n ====== Local pkl df does not exist, downloading now. ====== \n\n")
         df_not_processed = YahooDownloaderLocal(start_date = '2008-01-01',
-                        end_date = '2021-09-02',
+                        end_date = '2024-09-02',
                         ticker_list = config_tickers.DOW_30_TICKER).fetch_data()
 
         df = clean_data(df_not_processed)
@@ -240,7 +240,7 @@ if __name__ == "__main__":
 
 
     train = data_split(df, '2009-01-01','2020-06-30')
-    trade = data_split(df, '2020-07-01','2021-09-02')
+    trade = data_split(df, '2020-07-01','2024-09-02')
     train.to_pickle("data/train_df.pkl")
     trade.to_pickle("data/trade_df.pkl")
     print("=== Created train_df.pkl and trade_df.pkl data splits. ===")

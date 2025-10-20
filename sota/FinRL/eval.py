@@ -43,6 +43,7 @@ from utils.custom_DRLAgent import CustomDRLAgent
 # from stable_baselines3.common.callbacks import EvalCallback
 from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv # for parallelizing the Environments!
 import model # import the custom user-defined models.py! This contains the actual architecture we will evolve.
+import modelTD3
 # ---------------------------------------------------------------------------------
 
 def create_save_dir(save_root):
@@ -231,7 +232,7 @@ if __name__ == "__main__":
             },
         },
         "td3": {
-            "class": model.CustomTD3,
+            "class": modelTD3.CustomTD3,
             "params": {
                 "batch_size": 128,
                 "buffer_size": 100000,
@@ -353,7 +354,7 @@ if __name__ == "__main__":
     model_annual_return = perf_stats['Annual return']
     model_sharpe = perf_stats['Sharpe ratio']
 
-    print(f"\nYour DDPG Model:")
+    print(f"\nYour {ALGO} Model:")
     print(f"  Annual Return: {model_annual_return:.2%}")
     print(f"  Sharpe Ratio: {model_sharpe:.2f}")
 
