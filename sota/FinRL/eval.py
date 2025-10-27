@@ -44,6 +44,8 @@ from utils.custom_DRLAgent import CustomDRLAgent
 from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv # for parallelizing the Environments!
 import model # import the custom user-defined models.py! This contains the actual architecture we will evolve.
 import modelTD3
+import modelA2C
+import modelPPO
 # ---------------------------------------------------------------------------------
 
 def create_save_dir(save_root):
@@ -210,8 +212,8 @@ if __name__ == "__main__":
 
     # ========== CUSTOM AGENT SELECTION ==========
 
-    # Choose which algorithm to train: "ddpg" or "td3"
-    ALGO = "td3"
+    # Choose which algorithm to train: "ddpg", "td3", "a2c", "ppo"
+    ALGO = "ppo"
 
     # Shared agent
     agent = CustomDRLAgent(env=env_train_vec)
@@ -242,6 +244,28 @@ if __name__ == "__main__":
                 "target_noise_clip": 0.5,
                 "policy_kwargs": {
                     "net_arch": dict(pi=[400, 300], qf=[400, 300])
+                },
+            },
+        },
+        "a2c": {
+            "class": modelA2C.CustomA2C,
+            "params": {
+                "learning_rate": 0.001,
+                "n_steps": 10,
+                "policy_kwargs": {
+                    "net_arch": [256, 256]
+                }
+            },
+        },
+        "ppo": {
+            "class": modelPPO.CustomPPO,
+            "params": {
+                "learning_rate": 0.001,
+                "n_steps": 512,
+                "batch_size": 128,
+                "n_epochs": 25,
+                "policy_kwargs": {
+                    "net_arch": [512, 512]
                 },
             },
         },

@@ -1,6 +1,8 @@
 from finrl.agents.stablebaselines3.models import DRLAgent, MODELS
 from model import CustomDDPG#, CustomTD3  # Import your custom model class
 from modelTD3 import CustomTD3  # Import your custom TD3 model class
+from modelA2C import CustomA2C
+from modelPPO import CustomPPO
 
 class CustomDRLAgent(DRLAgent):
     """
